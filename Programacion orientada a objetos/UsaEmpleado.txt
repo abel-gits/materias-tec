@@ -1,0 +1,19 @@
+package clases;
+
+public class UsaEmpleado {
+public static void main(String[]args){
+	Empleado em = new Empleado();
+	String nom=" ";int edad=0;int peso=0;
+	System.out.println("escribe el nombre");
+	nom=Leer.dato();
+	System.out.println("escribe la edad");
+	edad=Leer.datoInt();
+	System.out.println("escribe el peso");
+	peso=Leer.datoInt();
+	em=new Empleado(nom,edad,peso);
+	em.CambiaNombre();
+	System.out.println(em.getNombre());
+	System.out.println(em.Calcula());
+}
+
+}

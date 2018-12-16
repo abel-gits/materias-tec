@@ -1,0 +1,42 @@
+package clases;
+
+public class Empleado {
+	private String Nombre;
+	private int Edad;
+	private int Peso;
+	public Empleado(String nombre, int edad, int peso) {
+		super();
+		Nombre = nombre;
+		Edad = edad;
+		Peso = peso;
+	}
+	public Empleado() {}
+	public String getNombre() {
+		return Nombre;
+	}
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	public int getEdad() {
+		return Edad;
+	}
+	public void setEdad(int edad) {
+		Edad = edad;
+	}
+	public int getPeso() {
+		return Peso;
+	}
+	public void setPeso(int peso) {
+		Peso = peso;
+	}
+	public void CambiaNombre(){
+		Nombre="hola "+Nombre;
+	}
+	public int Calcula(){
+		int a=0;
+		a=Edad*Peso;
+		return a;
+	}
+   
+
+}

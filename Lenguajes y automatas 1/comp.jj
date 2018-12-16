@@ -1,0 +1,344 @@
+PARSER_BEGIN(comp)
+import java.io.*;
+import java.io.PrintStream;
+import java.util.Hashtable;
+import java.lang.String;
+import java.util.ArrayList;
+class comp 
+{
+	static Token var;
+	static int cont=0;
+	static int c=0;
+	static String valor=" ";
+	public static void main( String[] args )throws ParseException, Exception
+	{
+		
+		try
+		{		
+     		comp analizador = new comp( System.in ) ;
+			analizador.Programa();
+			Tabla.imprimir();			
+			System.out.println("\tAnalizador ha terminado.");			
+		}
+		catch(ParseException e)
+		{	
+			Tabla.imprimir();		
+			System.out.println("\tAnalizador ha terminado.");
+		}
+	}
+}
+PARSER_END(comp)
+
+TOKEN : 
+{ 
+	  <Mayor: ">">//{ System.out.println("testing_expression - >"+image); } //1
+	| <Menor : "<" >// { System.out.println("testing_expression - >"+image); } //2
+	| <MayorIgual:">=">//{ System.out.println("testing_expression - >"+image); } //3
+	| <MenorIgual:"<="> //{ System.out.println("testing_expression - >"+image); } //4
+	| <Comparacion: "==" >// { System.out.println("testing_expression - >"+image); }//5
+	| <Diferente: "!=" >//{ System.out.println("testing_expression - >"+image); } //6
+	| <Asignacion: "=" >//{ System.out.println("Asignacion - >"+image); } //7
+	| <Mas : "+" >//{ System.out.println("Aritmetica_expression   - >"+image); }  //8
+	| <Menos:"-">//{ System.out.println("Aritmetica_expression - >"+image); } //9
+    | <ParAP: "(" >//{ System.out.println("Parentecis Izquierdo- >"+image); } //10
+	| <ParCi: ")" > //{ System.out.println("Parentecis derecho - >"+image); }//11
+	| <Izq: "{" >//{ System.out.println("llave izquierda - >"+image); } //12
+	| <Der: "}" > //{ System.out.println("llave derecha - >"+image); }//13
+	| <SEMICOLON: ";" >//{ System.out.println("punto y coma - >"+image); } //14
+	| <PUBLIC: "public">//{ System.out.println("MODIFICADOR - >"+image); } //15
+	| <clase: "class">//{ System.out.println("Class - >"+image); } //16
+	| <PRIVATE: "private"> //{ System.out.println("MODIFICADOR - >"+image); }//17
+	| <False: "false"> //{ System.out.println("boolean_literal - >"+image); }//18
+	| <True: "true">//{ System.out.println("boolean_literal - >"+image); } //19
+	| <integer : "int"> // { System.out.println("int - >"+image); }//20
+	| <If : "if"> //{ System.out.println("if_statement  - >"+image); } //21
+	| <Boolean : "boolean"> //{ System.out.println("tipo boolean - >"+image); } //22
+	| <Int : (["0"-"9"])+>//{ System.out.println("integer_literal - >"+image); }  //23
+	| <IDENTIFIER : ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","_"])*> //{ System.out.println("identificador - >"+image); } //24
+	
+}
+
+
+
+SKIP : 
+{ 
+	" "|"\n" | "\r" | "\r\n" | "\t"
+}
+
+void Programa() :
+{	
+	String mod=" ";
+	String tipo=" ";
+	String nombre=" ";
+	
+
+}
+{
+	try{
+		modifier()
+		({mod=token.image;})
+		({cont++;})
+
+	}catch(Exception e1){}			
+	try{
+		<clase>		
+		({tipo=token.image;})
+		({cont++;})		
+	}catch(Exception e2){
+		System.out.println("class "+e2.getMessage());
+	}
+	try{
+		<IDENTIFIER>
+		({nombre=token.image;})			
+		({cont++;})	
+	}catch(Exception e3){
+		System.out.println("identificador "+e3.getMessage());
+	}
+	({if (cont==3) {		
+		Tabla.insertar(mod,tipo,nombre,"  ");
+	}})
+	
+	
+	try{
+		<Izq>
+	}catch(Exception e4){
+		System.out.println("llave izquierda "+e4.getMessage());
+	}
+
+	field_declaration()
+	if_statement()	
+	try{
+		<Der>
+	}catch(Exception e5){
+		System.out.println("llave derecha "+e5.getMessage());
+	}
+	
+}
+void modifier() :
+{}
+{
+
+	try{
+		(<PUBLIC>|<PRIVATE>)		
+	}catch(Exception e){
+		System.out.println("modifier "+e.getMessage());
+	}
+		
+}
+void modifi() :
+{}
+{
+
+	try{
+		(<PUBLIC>|<PRIVATE>)
+		({c++;})
+	}catch(Exception e){
+		System.out.println("modifier "+e.getMessage());
+	}
+		
+}
+void field_declaration():
+{}
+{
+	variable_declaration()
+	try{
+		<SEMICOLON>
+	}catch(Exception e){
+		System.out.println("field_declaration "+e.getMessage());
+	}
+
+	
+}
+
+void variable_declaration():
+{
+	String mod=" ";
+	String tipo=" ";
+	String nombre=" ";	
+}
+{
+		try{
+		modifi()
+		({mod=token.image;})			
+		}catch(Exception e){}	
+		try{
+			type()		
+		({tipo=token.image;})											
+		}catch(Exception e1){
+			System.out.println("type_specifier "+e1.getMessage());}
+		try{
+			variable_declarator()
+			({valor=token.image;})			
+			({nombre=var.image;})			
+		}catch(Exception e2){}		
+
+		({if(c==4) {	
+		Tabla.insertar(mod,tipo,nombre,valor);		
+		
+	}})
+			
+	
+}
+
+void type():
+{}
+{
+	
+	type_specifier()				
+	
+}
+
+void variable_declarator():
+{	
+
+}
+{
+	try{
+		var=<IDENTIFIER>
+		({c++;})			
+	}catch(Exception e){
+		System.out.println("variable_declarator identificador "+e.getMessage());
+	}
+	
+	try{
+		<Asignacion>
+	}catch(Exception e1){
+		System.out.println("variable_declarator asignacion "+e1.getMessage());
+	}
+	
+	
+		try{
+		(<Int>|<True>|<False>)
+		({c++;})
+		
+	}catch(Exception e2){
+		System.out.println("variable_declarator asignacion "+e2.getMessage());
+		
+	}
+	
+	
+}
+
+void expression():
+{}
+{
+	testing_expression()
+	
+}
+
+void testing_expression():
+{}
+{
+	try{
+		(<Int>|<IDENTIFIER>)
+	}catch(Exception e){
+		System.out.println("testing_expression "+e.getMessage());
+	}
+	try{
+		(<Mayor>|<Menor>|<MenorIgual>|<MayorIgual>|<Comparacion>|<Diferente>)
+	}catch(Exception e1){
+		System.out.println("testing_expression "+e1.getMessage());
+	}
+	try{
+		(<Int>|<IDENTIFIER>)
+	}catch(Exception e2){
+		System.out.println("testing_expression "+e2.getMessage());
+	}
+	
+	
+	
+}
+void type_specifier():
+{}
+{		
+	try{
+		(<Boolean>|<integer>)
+		({c++;})			
+		}catch(Exception e1){System.out.println("type_specifier "+e1.getMessage());}
+}
+
+void if_statement():
+{}
+{
+	try{
+		<If>
+	}catch(Exception e){
+		System.out.println("if_statement "+e.getMessage());
+	}
+	try{
+		<ParAP>
+	}catch(Exception e1){
+		System.out.println("if_statement "+e1.getMessage());
+	}
+	expression()
+	try{
+		<ParCi>
+	}catch(Exception e2){
+		System.out.println("if_statement "+e2.getMessage());
+	}
+	statement()	 
+}
+
+void statement():
+{}
+{
+	 statement_block()
+	
+}
+
+
+void statement_block():
+{}
+{
+	try{
+		 <Izq>
+	}catch(Exception e){
+		System.out.println("statement_block "+e.getMessage());
+	}
+	aritmetica_expression()
+	try{
+		 <Der>
+	}catch(Exception e1){
+		System.out.println("statement_block "+e1.getMessage());
+	}
+	statement()
+	 
+}
+
+
+void aritmetica_expression():
+{}
+{
+	try{
+		<IDENTIFIER>
+	}catch(Exception e){
+		System.out.println("aritmetica_expression "+e.getMessage());
+	}
+	try{
+		<Asignacion>
+	}catch(Exception e1){
+		System.out.println("aritmetica_expression "+e1.getMessage());
+	}
+	try{
+		<Int>
+	}catch(Exception e2){
+		System.out.println("aritmetica_expression "+e2.getMessage());
+	}
+	try{
+		(<Mas>|<Menos>)
+	}catch(Exception e3){
+		System.out.println("aritmetica_expression "+e3.getMessage());
+	}
+	try{
+		<Int>
+	}catch(Exception e4){
+		System.out.println("aritmetica_expression  "+e4.getMessage());
+	}
+	try{
+		<SEMICOLON>
+	}catch(Exception e5){
+		System.out.println("aritmetica_expression "+e5.getMessage());
+	}
+	
+	 
+}

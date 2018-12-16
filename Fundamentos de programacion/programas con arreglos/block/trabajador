@@ -1,0 +1,23 @@
+public class trabajador {
+	Strong nombre;
+	int horas;
+	char categoria
+	public trabajador(String n,int h,char c) {
+	nombre=n;
+	horas=h;
+	ccategoria=c;
+	}
+	public String getnombre() {
+	return nombre;
+	}
+}
+
+
+
+
+
+trabajador []t = new trabajador[]
+t[i]=new trabajador(nombre,horas);
+
+
+

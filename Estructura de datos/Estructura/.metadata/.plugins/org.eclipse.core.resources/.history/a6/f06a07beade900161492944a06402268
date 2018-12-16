@@ -1,0 +1,49 @@
+package Pilas;
+import java.*;
+public class Invertir2 {
+	public static void main(String[] args) {
+		String cadena;
+		Scanner leer =new Scanner(System.in);
+		System.out.println("teclea una cadena ")
+		cadena=Leer.dato();
+		System.out.println();
+		Cola1 cola1 = new Cola1(cadena.length());
+		Pila1 pila1=new Pila1(cadena.length());
+		boolean Resins;
+		System.out.println("   original  ");
+		for (int i = 0; i < cadena.length(); i++) {
+			Resins=cola1.Insertar_Cola(cadena.substring(i,i+1));
+			if (!Resins) {
+				System.out.println("cola llena no se inserto el elemento"+cadena.substring(i,i+1));
+			}
+		}
+		System.out.println();
+		cola1.Mostrar();
+		System.out.println();
+		System.out.println("invertida");
+		String Res =cola1.retirar_Cola().toString();
+		while (Res.compareTo("no se pudo")!=0) {
+			Resins=pila1.Insertar_pila(new String(Res));
+			if (!Resins) {
+				System.out.println("pila llena no se inserto el elemento"+Res);
+			}
+			Res=cola1.retirar_Cola().toString();
+		}
+		System.out.println();
+		pila1.MostrarOri();
+		String Resf=pila1.retirar_pila().toString();
+		while (Resf.compareTo("no se puedo retirar")!=0) {
+			Resins=cola1.Insertar_Cola(new String(Resf));
+			if (!Resins) {
+				System.out.println("cola llena no se inserto el elemento"+Resf);
+			}
+			Resf=pila1.retirar_pila().toString();
+		}
+		System.out.println();
+		cola1.Mostrar();
+		System.out.println();
+		
+	}
+
+}
+

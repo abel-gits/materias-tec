@@ -1,0 +1,3 @@
+nombre de la base de datos: CatalogoPeliculas
+usuario: usuario1
+contraseña:123

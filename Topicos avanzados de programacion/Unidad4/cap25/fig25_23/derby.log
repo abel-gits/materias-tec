@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Wed May 24 19:49:27 MDT 2017:
+ Iniciando instancia a816c00e-015c-3d4b-5818-000003a26bd0 de Derby, versión The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 
+en el directorio de base de datos C:\Users\Abel\Desktop\Unidad4\cap25\fig25_23\LibretaDirecciones con el cargador de clases sun.misc.Launcher$AppClassLoader@5e481248
+Cargado desde file:/C:/Program%20Files/Java/jdk1.8.0_60/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_60-b27
+user.dir=C:\Users\Abel\Desktop\Unidad4\cap25\fig25_23
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Wed May 24 19:50:20 MDT 2017: cerrando motor de Derby
+----------------------------------------------------------------
+Wed May 24 19:50:20 MDT 2017:
+Cerrando la instancia a816c00e-015c-3d4b-5818-000003a26bd0 en el directorio de base de datos C:\Users\Abel\Desktop\Unidad4\cap25\fig25_23\LibretaDirecciones con cargador de clases sun.misc.Launcher$AppClassLoader@5e481248
+----------------------------------------------------------------

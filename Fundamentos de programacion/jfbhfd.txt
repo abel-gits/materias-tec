@@ -1,0 +1,19 @@
+public class Alumno {
+  private String nombre;
+  private char sexo;
+  private int calificacion;
+  public Alumno (String n, char s, int c) {
+   nombre=n;
+   sexo=s;
+   calificacion=c;
+   }
+     public String getnombre() {
+      return nombre;
+      }
+       public char getsexo() {
+        return sexo;
+         }
+         public calificacion() {
+          return calificacion() 
+           }
+            
