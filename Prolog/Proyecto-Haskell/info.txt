@@ -1,0 +1,2 @@
+https://cs.famaf.unc.edu.ar/~hoffmann/pd18/teoricoIO.html
+https://jperelli.com.ar/post/2015/10/21/haskell-tutorial/

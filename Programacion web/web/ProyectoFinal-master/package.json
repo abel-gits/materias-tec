@@ -1,0 +1,28 @@
+{
+  "name": "proyectofinal",
+  "version": "1.0.0",
+  "description": "Electron Vitrina con monedas y billetes internacionales",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^3.0.10",
+    "electron-packager": "^12.2.0",
+    "electron-require": "^0.3.0"
+  },
+  "devDependencies": {
+    "asar": "^0.14.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "empaqueta": "electron-packager . proyectofinal --overwrite --asar"
+  },
+  "keywords": [
+    "monedas",
+    "billetes",
+    "proyectofinal",
+    "vitrinas",
+    "muchodinero"
+  ],
+  "author": "Ana Sofia Juarez Lopez Lizbeth Margarita Armenta Bojorquez Karina Abigail Romero Romo",
+  "license": "ISC"
+}

@@ -1,0 +1,88 @@
+body {
+  background-image: url("https://us.123rf.com/450wm/berka/berka1407/berka140700327/29790267-fotograf%C3%ADa-del-viejo-reciclaje-papel-kraft-verde-verde-oliva-a-rayas-textura-gruesa-grano-grunge.jpg?ver=6");
+  font-size: 16px;
+  margin: 0px auto;
+  max-width: 1500px;
+  min-height: 900px;
+}
+header{
+  background-image: url("https://thumbs.dreamstime.com/z/international-currency-2509668.jpg");
+  color: #B89ECF;
+  height: 120px;
+  padding-top: 35px;
+  text-align: center;
+  width: 99.5%;
+  font-family: 'BEBAS',sans-serif;
+  text-shadow: -4px 3px 0 #654D78, -11px 7px 0 #2B1B37;
+}
+
+#seccion01{
+  height: 500px;
+}
+#seccion01 article{
+  display: inline-block;
+  background-color: white;
+  vertical-align: top;
+  color: black;
+  height: 280px;
+  margin-top: 45px;
+  margin-left: 45px;
+  width: 29%;
+  border-radius: 5px;
+}
+#seccion01 img{
+  padding-left: 25%;
+}
+#seccion01 header{
+  background-image: url("https://www.casadopapeldeparede.com.br/wp-content/uploads/2013/04/13090-90.jpg");
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 30px;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid #2B1B37;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+#imgVitrina{
+  padding-top: 5px;
+
+  min-width: 150px;
+  min-height: 100px;
+
+  max-width: 200px;
+  max-height: 200px;
+}
+#txtTitulo{
+  color: #2B1B37;
+  height: 15px;
+  width: 22px;
+  font-family: 'BEBAS',sans-serif;
+  text-shadow: -4px 3px 0 #B89ECF;
+}
+
+.btnMostrador{
+  background-color: #2B1B37;
+  color: #B89ECF;
+  border-color: #B89ECF;
+  margin-left: 35%;
+  height: 25px;
+  width: 120px;
+  border-radius: 5px;
+}
+
+.letraGrande{
+  font-size: 3.5em;
+}
+.letraMediana{
+  font-size: 1.5em;
+}
+.nito{
+  font-weight: bold;
+}
+
+@font-face{
+      font-family: "BEBAS";
+      src:url("./BEBAS.ttf");
+}

@@ -1,0 +1,44 @@
+
+
+
+------------------------ALVARO-----------------------------------
+
+%guarda en R un 1 si el alumno aprobo la materia M y un 0 si no
+reprobA(M,R):- random(1,10,N),materiaDif(E,M),N>E,R is 1.
+reprobA(_,R):- R is 0.
+
+
+% recibe una lista de materias y regresa una lista de las
+% aprobadas y otra de las reprobadas
+azar([]).
+azar([X|L1]):-reprobA(X,R),(R == 1, fun(X),azar(L1)); azar(L1).
+elimrep([],R):-retractall(guar(_)),assert(guar(R)).
+elimrep([L|L1],R):- eliminar(L,R,N),elimrep(L1,N).
+rand(L,A,R):-azar(L),guar(A),elimrep(A,L),guar(R),retractall(guar(_)),assert(guar([])).
+
+
+%calcular el numero de creditos en la carga
+cuentaC([],R):-R is 0.
+cuentaC([L|L1],R):- materia(S,L),cuentaC(L1,R1),R is R1+S.
+creditos(R):- carga(X),cuentaC(X,R).
+
+
+
+
+
+--------------------------JUAN----------------------
+
+%regresa true si la lista contiene el elemento X
+contiene(_,[],R):- R is 0.
+contiene(X,[L|L1],R):- (X==L,R is 1);(contiene(X,L1,R)).
+verifica(X,L):- contiene(X,L,R), R == 1.
+
+
+
+%elimina de rc o esp una materia si ya la paso y las guarda en aprobadas
+pasar([]).
+pasar([M|M1]):-gAp(M),rc(X),esp(Y), ((verifica(M,X),eRc(M));(verifica(M,Y),eEsp(M));(pasar(M1)).
+
+%verifica si L esta en rc o especial y lo guarda donde corresponde
+reprob(L):-rc(X),esp(Y),((verifica(L,X),gesp(L),eRc(L));(verifica(L,Y),nl,write("!Has reprobado un especial!"),nl,fin);(gRc(L))).
+
