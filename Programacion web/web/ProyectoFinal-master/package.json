@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "electron": "^3.0.10",
-    "electron-packager": "^12.2.0",
+    "electron-packager": "^16.0.0",
     "electron-require": "^0.3.0"
   },
   "devDependencies": {
